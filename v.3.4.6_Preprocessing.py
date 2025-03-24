@@ -75,7 +75,7 @@ for df in pd.read_csv(input_file,chunksize=chunk_size, usecols=['content', 'type
 
     print(f"Chunk {chunk_num}: Preprocessing = {time.time() - start_time:.2f} seconds") #Debug
 
-    #output to csv file
+    #output to pckle file
     df[['content', 'LABEL']].to_pickle(output_file)
     first_chunk = False
     print(f"Chunk {chunk_num}: Printing = {time.time() - start_time:.2f} seconds") #Debug

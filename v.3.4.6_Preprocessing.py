@@ -49,7 +49,7 @@ def preprocess(text):
     return text
 
 input_file = r'Group Project\995K.csv'
-output_file = 'articles_preprocessed_100K.pkl'
+output_file = 'articles_preprocessed_1mio.pkl'
 num_rows = 100000
 
 chunk_size = 100000
@@ -58,25 +58,25 @@ first_chunk = True
 
 print(f"Initialization = {time.time() - start_time:.2f} seconds") #Debug
 
-df = pd.read_csv(input_file,nrows=num_rows, usecols=['content', 'type'])
-df.dropna(subset=['content'], inplace=True) #Droppar rows með missing values
-df = df[df['content'].apply(lambda x: isinstance(x, str))] #Only use rows with string values
+for df in pd.read_csv(input_file,chunksize=chunk_size, usecols=['content', 'type']):
+    df.dropna(subset=['content'], inplace=True) #Droppar rows með missing values
+    df = df[df['content'].apply(lambda x: isinstance(x, str))] #Only use rows with string values
 
-#map 'type' to new labels, 1 = 'realiable' 0 = 'unreliable'
-label_mapping = {'reliable': 1, 'clickbait': 1, 'political': 1, 'unreliable': 0, 'hate': 0, 'conspiracy': 0}
-df['LABEL'] = df['type'].map(label_mapping)
+    #map 'type' to new labels, 1 = 'realiable' 0 = 'unreliable'
+    label_mapping = {'reliable': 1, 'clickbait': 1, 'political': 1, 'unreliable': 0, 'hate': 0, 'conspiracy': 0}
+    df['LABEL'] = df['type'].map(label_mapping)
 
-df.dropna(subset=['LABEL'], inplace=True) #drop rows not labeled above
+    df.dropna(subset=['LABEL'], inplace=True) #drop rows not labeled above
 
-print(f"Chunk {chunk_num}: Restructuring = {time.time() - start_time:.2f} seconds") #Debug
+    print(f"Chunk {chunk_num}: Restructuring = {time.time() - start_time:.2f} seconds") #Debug
 
-#apply preprocessing steps
-df['content'] = df['content'].apply(preprocess)
+    #apply preprocessing steps
+    df['content'] = df['content'].apply(preprocess)
 
-print(f"Chunk {chunk_num}: Preprocessing = {time.time() - start_time:.2f} seconds") #Debug
+    print(f"Chunk {chunk_num}: Preprocessing = {time.time() - start_time:.2f} seconds") #Debug
 
-#output to csv file
-df[['content', 'LABEL']].to_pickle(output_file)
-#first_chunk = False
-#print(f"Chunk {chunk_num}: Printing = {time.time() - start_time:.2f} seconds") #Debug
-#chunk_num +=1
+    #output to csv file
+    df[['content', 'LABEL']].to_pickle(output_file)
+    first_chunk = False
+    print(f"Chunk {chunk_num}: Printing = {time.time() - start_time:.2f} seconds") #Debug
+    chunk_num +=1

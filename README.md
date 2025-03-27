@@ -2,7 +2,7 @@
 
 ### Filer
 - **Functions.ipynb:** Samling af functioner brugt i projektet
-- **Preprocessing.py:** Del 1 optil exploratory data analysis. Python script som implementerer
+- **Preprocessing.py:** Hed tidligere v.3.4.6. Implementerer del 1 optil exploratory data analysis. Python script som implementerer
     cleaning, tokenizing, stemming og stop-word removal af datasettet og outputter det preprocessede
     data set som pkl fil.
 - **one-hot-encoding.ipynb:** Implementerer one-hot-encoding transformation af 

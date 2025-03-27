@@ -78,7 +78,7 @@ with open(output_file, "ab") as f:
 
         print(f"Chunk {chunk_num}: Preprocessing = {time.time() - start_time:.2f} seconds") #Debug
 
-        #output to csv file
+        #output to pkl file
         pickle.dump(df[['content', 'LABEL']], f)
         print(f"Chunk {chunk_num}: Printing = {time.time() - start_time:.2f} seconds") #Debug
         chunk_num +=1

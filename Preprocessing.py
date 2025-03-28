@@ -48,9 +48,9 @@ def preprocess(text):
     
     return text
 
-input_file = r'Group Project\995K.csv'
+input_file = r'995,000_rows.csv'
 output_file = 'articles_preprocessed_1mio.pkl'
-num_rows = 200000
+num_rows = 1000000
 
 chunk_size = 100000
 chunk_num = 1
@@ -66,7 +66,7 @@ with open(output_file, "ab") as f:
         df = df[df['content'].apply(lambda x: isinstance(x, str))] #Only use rows with string values
 
         #map 'type' to new labels, 1 = 'realiable' 0 = 'unreliable'
-        label_mapping = {'reliable': 1, 'clickbait': 1, 'political': 1, 'unreliable': 0, 'hate': 0, 'conspiracy': 0}
+        label_mapping = {'reliable': 1, 'clickbait': 1, 'political': 1, 'unreliable': 0, 'hate': 0, 'conspiracy': 0, 'fake':0}
         df['LABEL'] = df['type'].map(label_mapping)
 
         df.dropna(subset=['LABEL'], inplace=True) #drop rows not labeled above

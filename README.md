@@ -1,6 +1,6 @@
 # Group Project
 
-Our solution to the project was done in parts. Intermediate results were saved to disc and loaded back up to be used in subsequent steps. Below is an overview of the files included in our submission, what they use as inputs and what they produce as outputs.
+Our solution to the projet was done in parts, with separate files implementing different parts of the project. Intermediate results were saved to disc and loaded back up to be used in subsequent steps. Below is an overview of the files included in our submission, what they use as inputs and what they produce as outputs.
 
 #### Part 1
 - **Preprocessing.py:**

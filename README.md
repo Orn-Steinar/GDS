@@ -2,8 +2,6 @@
 
 Our solution to the project was done in parts. Intermediate results were saved to disc and loaded back up to be used in subsequent steps. Below is an overview of the files included in our submission, what they use as inputs and what they produce as outputs.
 
-### Files
-
 #### Part 1
 - **Preprocessing.py:**
     - Input: The 955K.csv file
@@ -27,18 +25,3 @@ Our solution to the project was done in parts. Intermediate results were saved t
 #### Other files
 - **Functions.ipynb:** Samling af functioner brugt i projektet
 - **LIAR**
-
-Hvad arberjder vi med?
-
-Örn: Part 1. Task 1,2    Part 3
-
-Magnus: Part 2
-
-David: Part 1. Task 3,4   &   Part 2
-
-Toby: Part 3
-
-
-
-
-Wah!!
